@@ -30,13 +30,9 @@ public class Leaderboard : ILeaderboard<IMatch>
         {
             match.HomeTeamScore += oldRecord.HomeTeamScore;
             match.AwayTeamScore += oldRecord.AwayTeamScore;
-            if (oldRecord.Score != 0)
+            if (oldRecord.Score != match.Score)
             {
                 tree.RemoveNodesFromScore(oldRecord.Score, match);
-                tree.Add(match.Score, match);
-            }
-            else
-            {
                 tree.Add(match.Score, match);
             }
             map[match.MatchId] = match;
